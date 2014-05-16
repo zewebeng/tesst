@@ -1,0 +1,47 @@
+
+<% provide(:title, @user.name) %>
+<h2>My meetup groups</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Topic</th>
+    <th></th>
+  </tr>
+  </thead>
+
+</table>
+<h2>Member of  meetup groups</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Meetup Group</th>
+    <th>Member since</th>
+    <th></th>
+  </tr>
+  </thead>
+
+</table>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        Welcome
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <%= render 'follow_form' if signed_in? %>
+
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+</div>
