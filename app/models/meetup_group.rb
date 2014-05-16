@@ -3,7 +3,7 @@ class MeetupGroup < ActiveRecord::Base
   has_many :memberships
   has_many :activities
 
-  validates :topic, :home_town, :incepted_at, :owner_id, presence: true
+  validates :topic, :home_town, :incepted_at, presence: true
 
   after_create do
     Membership.create!(user: owner, meetup_group: self)

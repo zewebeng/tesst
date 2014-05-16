@@ -29,7 +29,8 @@ class MeetupGroupsController < ApplicationController
     respond_to do |format|
       if @meetup_group.save
         format.html { redirect_to @meetup_group, notice: 'Meetup group was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @meetup_group }
+        format.json { render action: 'users/show', status: :created, location: @meetup_group }
+
       else
         format.html { render action: 'new' }
         format.json { render json: @meetup_group.errors, status: :unprocessable_entity }

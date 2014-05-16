@@ -1,14 +1,22 @@
 
 <% provide(:title, @user.name) %>
 <%= link_to 'New Meetup group', new_meetup_group_path,class: "btn btn-large btn-primary"  %>
-<h2>My meetup groups</h2>
+<% if @user.meetup_groups.any? %>
+<h2>My meetup groups( <%= @user.meetup_groups.count %>)</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+    <%= content_tag_for(:tr, @user.managing_meetup_groups) do |meetup_group| %>
+          <tr>
+            <th>Topic</th>
+            <th><%= link_to meetup_group.topic, meetup_group %></th>
+          </tr>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Topic</th>
-    <th></th>
-  </tr>
+
+    <% end %>
+
+<% end %>
+
   </thead>
 
 </table>
