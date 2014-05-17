@@ -3,6 +3,7 @@ class MeetupGroup < ActiveRecord::Base
   has_many :memberships
   has_many :activities
 
+
   validates :topic, :home_town, :incepted_at, presence: true
 
   after_create do

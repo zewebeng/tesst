@@ -36,7 +36,15 @@
         <%= content_tag_for(:tr, @meetup_group.activities) do |activities| %>
           <tr>
             <th>Topic</th>
-            <th><%= link_to activities.topic, activities %></th>
+            <th><%= link_to activities.Name, activities %></th>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <th><%= link_to activities.Start_at, activities %></th>
+          </tr>
+          <tr>
+            <th>Duration</th>
+            <th><%= link_to activities.Duration, activities %></th>
           </tr>
 
 
