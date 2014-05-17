@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div style="float: right">
-  <%= link_to 'Add New Activity', new_activity_path,class: "btn btn-large btn-primary"  %>
+  <%= link_to 'Add Activity', new_activity_path,class: "btn btn-large btn-primary"  %>
+  <%= link_to 'Add Members', new_membership_path,class: "btn btn-large btn-primary"  %>
 
 
 </div>
@@ -26,3 +27,23 @@
 
 <%= link_to 'Edit', edit_meetup_group_path(@meetup_group) %> |
 <%= link_to 'Back', meetup_groups_path %>
+
+<% if @meetup_group.activities.any? %>
+    <h2>Group Activities( <%= @meetup_group.activities.count %>)</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <%= content_tag_for(:tr, @meetup_group.managing_activities) do |activities| %>
+          <tr>
+            <th>Topic</th>
+            <th><%= link_to activities.topic, activities %></th>
+          </tr>
+
+
+      <% end %>
+
+<% end %>
+
+</thead>
+
+</table>
