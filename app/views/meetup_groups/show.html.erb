@@ -33,7 +33,7 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <%= content_tag_for(:tr, @meetup_group.managing_activities) do |activities| %>
+        <%= content_tag_for(:tr, @meetup_group.activities) do |activities| %>
           <tr>
             <th>Topic</th>
             <th><%= link_to activities.topic, activities %></th>
@@ -43,6 +43,26 @@
       <% end %>
 
 <% end %>
+
+</thead>
+
+</table>
+
+<% if @meetup_group.memberships.any? %>
+    <h2>Members( <%= @meetup_group.memberships.count %>)</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <%= content_tag_for(:tr, @meetup_group.memberships) do |memberships|%>
+          <tr>
+            <th>User</th>
+            <th><%= link_to memberships.user_id, memberships %></th>
+          </tr>
+
+
+      <% end %>
+<% end %>
+
 
 </thead>
 
