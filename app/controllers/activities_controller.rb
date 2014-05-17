@@ -16,7 +16,7 @@
 
   # GET /activities/new
   def new
-    @activity = Activity.new
+    @activity = Activity.new(activity_params)
   end
 
   # GET /activities/1/edit

@@ -14,7 +14,7 @@ class MeetupGroupsController < ApplicationController
 
   # GET /meetup_groups/new
   def new
-    @meetup_group = MeetupGroup.new
+    @meetup_group = MeetupGroup.new(owner: current_user)
   end
 
   # GET /meetup_groups/1/edit
@@ -63,13 +63,13 @@ class MeetupGroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meetup_group
-      @meetup_group = MeetupGroup.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_meetup_group
+    @meetup_group = MeetupGroup.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def meetup_group_params
-      params.require(:meetup_group).permit(:owner_id, :topic, :incepted_at, :home_town)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def meetup_group_params
+    params.require(:meetup_group).permit(:owner_id, :topic, :incepted_at, :home_town)
+  end
 end
