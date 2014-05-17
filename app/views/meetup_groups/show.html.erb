@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
+<div style="float: right">
+  <%= link_to 'Add New Activity', new_activity_path,class: "btn btn-large btn-primary"  %>
 
+
+</div>
 <p>
   <strong>Owner:</strong>
   <%= @meetup_group.owner_id %>

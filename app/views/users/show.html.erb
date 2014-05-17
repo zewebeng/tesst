@@ -1,6 +1,7 @@
 
 <% provide(:title, @user.name) %>
 <%= link_to 'New Meetup group', new_meetup_group_path,class: "btn btn-large btn-primary"  %>
+
 <% if @user.meetup_groups.any? %>
 <h2>My meetup groups( <%= @user.meetup_groups.count %>)</h2>
     <table class="table table-striped">
