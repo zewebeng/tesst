@@ -25,14 +25,16 @@
         <th><%= meetup_group.topic%></th>
         <th><%= link_to 'View', meetup_group %></th>
         <th><%= link_to 'Edit', edit_meetup_group_path(meetup_group), class: "btn btn-large btn-primary"  %></th>
-
+       <th> <%= link_to 'Add Activity', new_activity_path(activity: {meetup_group_id: meetup_group.id}),
+                    class: "btn btn-large btn-primary"   %></th>
+        <th><%= link_to 'Add Member', new_membership_path(membership: {meetup_group_id: meetup_group.id}),class: "btn btn-large btn-primary"  %></th>
         <th><%= link_to 'Delete', meetup_group, method: :delete, data: { confirm: 'Are you sure?' },title: meetup_group.topic  %></th>
       </tr>
 
 
       <% end %>
 
-
+</tr>
 
 
 
