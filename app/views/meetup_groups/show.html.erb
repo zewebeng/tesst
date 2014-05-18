@@ -1,77 +1,72 @@
 <p id="notice"><%= notice %></p>
-<div style="float: right">
-  <%= link_to 'Add Activity', new_activity_path(activity: {meetup_group_id: @meetup_group.id}),class: "btn btn-large btn-primary"  %>
-  <%= link_to 'Add Member', new_membership_path(membership: {meetup_group_id: @meetup_group.id}),class: "btn btn-large btn-primary"  %>
+<%= link_to 'Back', current_user,class: "btn btn-large btn-primary" %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+       Topic: <%= @meetup_group.topic %>
+       </h1>
+      <h1>
+        Incepted At: <%= @meetup_group.incepted_at %>
+        <br/>
+        Hometown: <%= @meetup_group.home_town %>
+      </h1>
+    </section>
+  </aside>
+</div>
+<div>
+
+
 
 
 </div>
-<p>
-  <strong>Owner:</strong>
-  <%= @meetup_group.owner_id %>
-</p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @meetup_group.topic %>
-</p>
-
-<p>
-  <strong>Incepted at:</strong>
-  <%= @meetup_group.incepted_at %>
-</p>
-
-<p>
-  <strong>Home town:</strong>
-  <%= @meetup_group.home_town %>
-</p>
-
-<%= link_to 'Edit', edit_meetup_group_path(@meetup_group) %> |
-<%= link_to 'Back', meetup_groups_path %>
-
-<% if @meetup_group.activities.any? %>
-    <h2>Group Activities( <%= @meetup_group.activities.count %>)</h2>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <%= content_tag_for(:tr, @meetup_group.activities) do |activities| %>
-          <tr>
-            <th>Topic</th>
-            <th><%= link_to activities.Name, activities %></th>
-          </tr>
-          <tr>
-            <th>Date</th>
-            <th><%= link_to activities.Start_at, activities %></th>
-          </tr>
-          <tr>
-            <th>Duration</th>
-            <th><%= link_to activities.Duration, activities %></th>
-          </tr>
+<div class="row">
+  <% if @meetup_group.activities.any? %>
+      <h2>Group Activities( <%= @meetup_group.activities.count %>)</h2>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <%= content_tag_for(:tr, @meetup_group.activities) do |activities| %>
+            <tr>
+              <th>Topic</th>
+              <th><%= link_to activities.Name, activities %></th>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <th><%= link_to activities.Start_at, activities %></th>
+            </tr>
+            <tr>
+              <th>Duration</th>
+              <th><%= link_to activities.Duration, activities %></th>
+            </tr>
 
 
-      <% end %>
+        <% end %>
 
-<% end %>
+  <% end %>
 
-</thead>
+  </thead>
 
-</table>
+  </table>
 
-<% if @meetup_group.memberships.any? %>
-    <h2>Members( <%= @meetup_group.memberships.count %>)</h2>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <%= content_tag_for(:tr, @meetup_group.memberships) do |memberships|%>
-          <tr>
-            <th>User</th>
-            <th><%= link_to memberships.user_id, memberships %></th>
-          </tr>
-
-
-      <% end %>
-<% end %>
+  <% if @meetup_group.memberships.any? %>
+      <h2>Members( <%= @meetup_group.memberships.count %>)</h2>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <%= content_tag_for(:tr, @meetup_group.memberships) do |memberships|%>
+            <tr>
+              <th>User</th>
+              <th><%= link_to memberships.user_id, memberships %></th>
+            </tr>
 
 
-</thead>
+        <% end %>
+  <% end %>
 
-</table>
+
+  </thead>
+
+  </table>
+</div>

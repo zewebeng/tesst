@@ -6,7 +6,5 @@ class MeetupGroup < ActiveRecord::Base
 
   validates :topic, :home_town, :incepted_at, :owner_id, presence: true
 
-  after_create do
-    Membership.create!(user: owner, meetup_group: self)
-  end
+
 end

@@ -1,22 +1,40 @@
 
 <% provide(:title, @user.name) %>
+<div class="row">
+<aside class="span4">
+  <section>
+    <h1>
+      Welcome
+      <%= @user.name %>
+    </h1>
+  </section>
+
+</aside>
+
+</div>
 <%= link_to 'New Meetup group', new_meetup_group_path,class: "btn btn-large btn-primary"  %>
 
-<% if @user.meetup_groups.any? %>
-<h2>My meetup groups( <%= @user.meetup_groups.count-1 %>)</h2>
-    <table class="table table-striped">
-      <thead>
-      <tr>
+
+<h2>My meetup groups</h2>
+<table class="table table-striped">
+  <thead>
+  <tr><th>Topic</th></tr>
+  <tr>
     <%= content_tag_for(:tr, @user.managing_meetup_groups) do |meetup_group| %>
-          <tr>
-            <th>Topic</th>
-            <th><%= link_to meetup_group.topic, meetup_group %></th>
-          </tr>
+
+        <th><%= meetup_group.topic%></th>
+        <th><%= link_to 'View', meetup_group %></th>
+        <th><%= link_to 'Edit', edit_meetup_group_path(meetup_group), class: "btn btn-large btn-primary"  %></th>
+
+        <th><%= link_to 'Delete', meetup_group, method: :delete, data: { confirm: 'Are you sure?' },title: meetup_group.topic  %></th>
+      </tr>
 
 
-    <% end %>
+      <% end %>
 
-<% end %>
+
+
+
 
   </thead>
 
@@ -30,29 +48,9 @@
     <th></th>
   </tr>
   </thead>
+  <%= content_tag_for(:tr, @user.memberships) do |membership| %>
+      <td><%= link_to membership.meetup_group.topic, membership.meetup_group %></td>
+      <td><%= membership.created_at %></td>
 
+  <% end %>
 </table>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        Welcome
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-  <div class="span8">
-    <%= render 'follow_form' if signed_in? %>
-
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-  </div>
-</div>

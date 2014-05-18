@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :managing_meetup_groups, foreign_key: :owner_id, class_name: 'MeetupGroup'
   has_many :meetup_groups, through: :memberships
-  has_many :memberships
+  has_many :memberships,  dependent: :delete_all
 
 
   has_secure_password

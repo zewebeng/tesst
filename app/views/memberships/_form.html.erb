@@ -12,7 +12,7 @@
   <% end %>
     <%= f.hidden_field :meetup_group_id %>
     <div class="field">
-      <%= f.collection_select :user_id, User.order(:name),:id,:name, include_blank: true %>
+      <%= f.collection_select :user_id,  User.all.to_a - @membership.meetup_group.memberships.collect(&:user),:id,:name, include_blank: true %>
     </div>
 
 

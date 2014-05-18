@@ -56,8 +56,9 @@ class MeetupGroupsController < ApplicationController
   # DELETE /meetup_groups/1.json
   def destroy
     @meetup_group.destroy
+
     respond_to do |format|
-      format.html { redirect_to meetup_groups_url }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end
