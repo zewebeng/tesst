@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140516184611) do
     t.integer  "votes_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url",       default: "",    null: false
+    t.string   "image_link",      default: "",    null: false
   end
 
   create_table "meetup_groups", force: true do |t|

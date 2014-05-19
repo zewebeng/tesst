@@ -10,14 +10,7 @@
       </ul>
     </div>
   <% end %>
-    <%  if current_user?(@meetup_group.owner) %>
 
-        <%= link_to 'Add Activity', new_activity_path(activity: {meetup_group_id: @meetup_group.id}),
-                    class: "btn btn-large btn-primary"   %>
-        <%= link_to 'Add Member', new_membership_path(membership: {meetup_group_id: @meetup_group.id}),class: "btn btn-large btn-primary"  %>
-    <% else %>
-
-    <% end %>
     <%= f.hidden_field :owner_id %>
   <div class="field">
     <%= f.label :topic %><br>

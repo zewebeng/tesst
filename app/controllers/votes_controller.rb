@@ -14,7 +14,7 @@ class VotesController < ApplicationController
 
   # GET /votes/new
   def new
-    @vote = Vote.new
+    @vote = Vote.new(user_id:current_user)
   end
 
   # GET /votes/1/edit
@@ -69,6 +69,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:activity_id, :user_id)
+      params.require(:vote).permit(:user_id, :activity_id)
     end
 end

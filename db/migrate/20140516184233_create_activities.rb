@@ -9,7 +9,8 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :meetup_group_id
       t.boolean :Definite
       t.integer :votes_count
-
+      t.string :image_url
+      t.string :image_link
       t.timestamps
     end
   end
