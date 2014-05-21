@@ -17,7 +17,7 @@ SampleApp40::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   root to: 'static_pages#home'
-
+  get 'search_images/:search_term' => 'welcome#search_images'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

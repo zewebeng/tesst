@@ -43,7 +43,7 @@
   # PATCH/PUT /activities/1.json
   def update
     respond_to do |format|
-      if @activity.update(activity_params)
+      if @activity.update(update_params)
         format.html { redirect_to @activity.meetup_group }
         format.json { head :no_content }
       else
@@ -68,9 +68,13 @@
     def set_activity
       @activity = Activity.find(params[:id])
     end
-
+  private
+  def update_params
+    params.require(:activity).permit(:Name, :Location, :Start_at, :Duration, :Description, :meetup_group_id, :Definite, :image_url, :image_link)
+  end
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
       params.require(:activity).permit(:Name, :Location, :Start_at, :Duration, :Description, :meetup_group_id, :Definite, :votes_count)
     end
+
 end
