@@ -1,4 +1,5 @@
-<h1>Listing meetup_groups</h1>
+<p id="notice"><%= notice %></p>
+<h1>All Your Groups</h1>
 
 <table>
   <thead>
@@ -14,8 +15,10 @@
   </thead>
 
   <tbody>
+<% if current_user?(@meetup_group.owner_id) %>
     <% @meetup_groups.each do |meetup_group| %>
-      <tr>
+
+      <tr >
         <td><%= meetup_group.owner_id %></td>
         <td><%= meetup_group.topic %></td>
         <td><%= meetup_group.incepted_at %></td>
@@ -25,6 +28,7 @@
         <td><%= link_to 'Destroy', meetup_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  <% end %>
   </tbody>
 </table>
 

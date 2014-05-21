@@ -34,8 +34,7 @@
   <div class="col-sm-6 col-sm-push-6">
     <%= attached_image @activity %>
     <%= link_to @activity.image_link, @activity.image_link, class: 'activity-image-link' %>
-    <%= link_to 'Attach image', '#', class: 'btn btn-primary btn-lg',
-                data: {toggle: 'modal', target: '#selectActivityImage'} %>
+
   </div>
   </div>
 
@@ -67,10 +66,6 @@
   <%= @activity.Description %>
 </p>
 
-<p>
-  <strong>Meetup group:</strong>
-  <%= @activity.meetup_group_id %>
-</p>
 
 <p>
   <strong>Definite:</strong>
@@ -83,4 +78,4 @@
 </p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+<%= link_to 'Back', @activity.meetup_group %>

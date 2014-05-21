@@ -1,3 +1,35 @@
+<div class="modal fade" id="selectActivityImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Search Image on Flickr</h4>
+      </div>
+      <div class="modal-body">
+        <form class="search-form form-inline" role="search">
+          <input type="text" class="form-control" placeholder="Search">
+          <button type="submit" class="btn btn-default">Search Images</button>
+        </form>
+        <div class="search-box">
+          <ul class="pager">
+            <li><a href="#" class="prev">Previous</a></li>
+            <li><a href="#" class="next">Next</a></li>
+          </ul>
+          <div class="search-results">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary save-activity-image" data-activity="<%= @activity.id %>">Save image</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <%= form_for(@activity) do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
@@ -37,12 +69,18 @@
   <div class="field">
     <%= f.label :Definite %><br>
     <%= f.check_box :Definite %>
-  </div>
-  <div class="field">
-    <%= f.label :votes_count %><br>
-    <%= f.number_field :votes_count %>
-  </div>
+  </div><br />
+
+    <div class="action">
+
+      <div class="col-sm-6 col-sm-push-6">
+
+           <%= link_to 'Attach image', '@activity', class: 'btn btn-primary btn-lg',
+                    data: {toggle: 'modal', target: '#selectActivityImage'} %>
+      </div>
+    </div>
+<br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary btn-lg' %> <%= link_to  'Back', current_user, class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>

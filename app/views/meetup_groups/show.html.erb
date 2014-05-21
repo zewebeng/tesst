@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Home', current_user %> > <%= @meetup_group.topic %>
+<%= link_to 'Home', current_user %> > <%= @meetup_group.topic %><br /><br />
+
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
-       Topic: <%= @meetup_group.topic %>
+       <%= @meetup_group.topic %>
        </h1>
       <h1>
-        Incepted At: <%= @meetup_group.incepted_at %>
-        <br/>
-        Hometown: <%= @meetup_group.home_town %>
-      </h1>
+      Start: <%= @meetup_group.incepted_at %>
+      <br/>
+      Place: <%= @meetup_group.home_town %>
+    </h1>
 
-    </section>
+     </section>
   </aside>
 </div>
 <div>

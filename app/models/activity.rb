@@ -6,6 +6,8 @@ class Activity < ActiveRecord::Base
   validates :Description, length: {minimum: 20}
   validates :Duration, numericality: {greater_than_or_equal_to: 15}
 
+
+
   def vote(user)
     votes.where(user: user).first
   end
@@ -13,4 +15,7 @@ class Activity < ActiveRecord::Base
   def voted?(user)
     !vote(user).nil?
   end
+
+
+
 end
